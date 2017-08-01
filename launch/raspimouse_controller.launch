@@ -1,0 +1,17 @@
+<launch>
+  <node pkg="pimouse_monitor" name="webserver" type="webserver.py" args="8000" />
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch">
+     <arg name="port" value="9000"/>
+  </include>
+  <include file="$(find pimouse_ros)/launch/pimouse.launch" />
+  
+  <node pkg="cv_camera" name="cv_camera_node" type="cv_camera_node" >
+    <param name="rate" value="10.0" />
+    <param name="image_width" value="320" />
+    <param name="image_height" value="240" />
+  </node>
+
+  <node pkg="mjpeg_server" name="mjpeg_server" type="mjpeg_server" >
+    <param name="port" value="10000" />
+  </node>
+</launch>

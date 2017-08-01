@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">    <!--jaに変更-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; （以後略）-->
+    <title>Pimouse Monitor</title>   <!--変更-->
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="virtualjoystick.js"></script>
+   
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 col-xs-3">
+          <h5>Stickpad</h5>
+          <h5><div id="touchmotion" class="well" style="width:140px;height:270px;"><span id="result"></span></div></h5>
+          <script type="text/javascript">
+               var joystick = new VirtualJoystick({
+                    mouseSupport    : true,
+                    limitStickTravel: true,
+                    stickRadius     : 100,
+                });
+                
+                joystick.addEventListener('touchStartValidation', function(event){
+                var touch = event.changedTouches[0];
+                if( touch.pageX >= window.innerWidth/2 )  return false;
+                return true
+                });
+		
+	      setInterval(function(){
+                        var outputEl  = document.getElementById('result');
+                        outputEl.innerHTML  = 
+                        'fw:'+Math.round(fw*1000)+'[mm/s]<br>'
+                        +'rot:'+Math.round(rot*50)+'[deg/s]';                   
+                 }, 100);      
+         </script>
+        </div>
+        <div class="col-md-8 col-xs-6">
+          <h5>Camera</h5>
+          <object id="camstream" style="width:320px;height:240px" ></object>
+        </div>
+        <div class="col-md-2 col-xs-2" id="lightsensors">
+          <h6>Light Sensors</h6>
+          <table class="table table-striped">
+            <tr><th>DIRECTION</th><th>VALUE</th></tr>
+            <tr><td>left_forward</td><td id="left_forward"></td></tr>
+            <tr><td>left_side</td><td id="left_side"></td></tr>
+            <tr><td>right_side</td><td id="right_side"></td></tr>
+            <tr><td>right_forward</td><td id="right_forward"></td></tr>
+            <tr><td>sum_all</td><td id="sum_all"></td></tr>
+            <tr><td>sum_forward</td><td id="sum_forward"></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+   </div>
+      <div class="row">
+        <div class="col-md-offset-2 col-xs-offset-9">
+         <h5>Motors<button type="button" class="btn btn-danger" id="motor_on">ON</button>
+            <button type="button" class="btn btn-primary" id="motor_off">OFF</button></h5>
+      </div>
+    </div>
+   </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="http://cdn.robotwebtools.org/EventEmitter2/current/eventemitter2.min.js"></script>
+    <script src="http://cdn.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+  <script src="main.js"></script>
+
+  </body>
+</html>
+
