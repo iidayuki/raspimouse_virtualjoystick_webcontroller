@@ -50,9 +50,9 @@ To use this script with raspimouse_ros_2, input the following commands.
     
 In another terminal
 
-    $ roslaunch raspimouse_controller raspimouse_controller.launch 
+    $ roslaunch raspimouse_virtualjoystick_webcontroller raspimouse_controller.launch 
 
-Open the browser: 
+Open the browser:  
     http:// localhost :8000
     
 
