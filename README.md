@@ -27,7 +27,7 @@ Next, download the dependent ROS package into ~/catkin_ws/src and build it
     git clone https://github.com/ryuichiueda/raspimouse_ros_2.git
     cd ~/catkin_ws && catkin_make && source ~/catkin_ws/devel/setup.bash
 
-Next, USB connection between webcam and robot,　download this repository and build it.
+Next, USB connection between webcam and robot and download this repository and build it.
 
     sudo apt install ros-kinetic-cv-bridge
     sudo apt install ros-kinetic-cv-camera
