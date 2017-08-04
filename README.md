@@ -15,7 +15,7 @@ This package requires the following to run:
   * ros-kinetic-cv-bridge
   * ros-kinetic-cv-camera
   * ros-kinetic-image-transport-plugins
-  * rosbridge_suite
+  * ros-kinetic-rosbridge-suite
 
 ## Installation
 
@@ -27,20 +27,20 @@ Next, download the dependent ROS package into ~/catkin_ws/src and build it
     git clone https://github.com/ryuichiueda/raspimouse_ros_2.git
     cd ~/catkin_ws && catkin_make && source ~/catkin_ws/devel/setup.bash
 
-Next, USB connection between webcam and robot and download this repository and build it.
+Next, USB connection between webcam and robot, download this repository and build it.
 
     sudo apt install ros-kinetic-cv-bridge
     sudo apt install ros-kinetic-cv-camera
     sudo apt install ros-kinetic-image-transport-plugins
+    sudo apt install ros-kinetic-rosbridge-suite
     cd ~/catkin_ws/src
     git clone https://github.com/RobotWebTools/mjpeg_server.git
     cd ~/catkin_ws && catkin_make && source ~/catkin_ws/devel/setup.bash
     
-Finaly, download this repository and build it and install this package.
+Finaly, download this repository and build it.
 
     cd ~/catkin_ws/src
     git clone https://github.com/iidayuki/raspimouse_virtualjoystick_webcontroller.git
-    sudo apt install ros-kinetic-rosbridge-suite
     cd ~/catkin_ws && catkin_make && source ~/catkin_ws/devel/setup.bash 
     
 ## Usage
